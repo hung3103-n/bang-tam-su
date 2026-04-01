@@ -636,6 +636,127 @@ body {
 }
 .viewer-close:hover { background: rgba(0,0,0,0.18); }
 
+
+/* =====================================================================
+   QR CODE BADGE
+   ===================================================================== */
+.qr-badge {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 6px;
+  padding: 6px 6px 5px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+  transform: rotate(2deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.qr-badge:hover {
+  transform: rotate(0deg) scale(1.06);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+}
+
+.qr-img {
+  width: 72px;
+  height: 72px;
+  display: block;
+  border-radius: 3px;
+  image-rendering: crisp-edges;
+  pointer-events: none;
+}
+
+.qr-label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  color: #555;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ── QR Popup ── */
+.qr-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  z-index: 6000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.qr-popup-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.qr-popup {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  transform: scale(0.8) translateY(24px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.qr-popup-overlay.open .qr-popup {
+  transform: scale(1) translateY(0);
+}
+
+.qr-popup-img {
+  width: min(260px, 72vw);
+  height: min(260px, 72vw);
+  display: block;
+  border-radius: 6px;
+  image-rendering: crisp-edges;
+}
+
+.qr-popup-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.qr-popup-sub {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: #888;
+  text-align: center;
+  margin-top: -8px;
+}
+
+.qr-popup-close {
+  margin-top: 4px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 22px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.qr-popup-close:hover { background: #e0e0e0; }
+
+@media (max-width: 600px) {
+  .qr-badge { top: 10px; right: 10px; }
+  .qr-img { width: 56px; height: 56px; }
+}
 /* =====================================================================
    RESPONSIVE
    ===================================================================== */

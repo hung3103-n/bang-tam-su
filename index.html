@@ -36,6 +36,12 @@
         <span class="note-count" id="noteCount"></span>
       </div>
 
+      <!-- QR Code góc phải -->
+      <div class="qr-badge">
+        <img src="img/qrcode.png" alt="QR Code" class="qr-img" />
+        <span class="qr-label">Quét để vào</span>
+      </div>
+
       <!-- Notes grid -->
       <div class="notes-container" id="notesContainer">
         <div class="loading-overlay" id="loadingOverlay">
@@ -83,6 +89,16 @@
       <button class="btn-cancel" id="cancelBtn">Thôi</button>
       <button class="btn-submit" id="submitBtn">📌 Dán lên bảng!</button>
     </div>
+  </div>
+</div>
+
+<!-- =================== QR POPUP =================== -->
+<div class="qr-popup-overlay" id="qrPopupOverlay">
+  <div class="qr-popup">
+    <p class="qr-popup-title">📌 Bảng Tâm Sự 12 Tin</p>
+    <img src="img/qrcode.png" alt="QR Code" class="qr-popup-img" />
+    <p class="qr-popup-sub">Quét để truy cập và gửi tâm sự</p>
+    <button class="qr-popup-close" id="qrPopupClose">Đóng</button>
   </div>
 </div>
 

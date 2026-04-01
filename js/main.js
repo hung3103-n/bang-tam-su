@@ -262,7 +262,7 @@ async function submitNote() {
 // =============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Group 6 : Quan - Hung - An - Nam - Phong')
+
   // Tên lớp từ config
   document.getElementById('boardTitle').textContent    = `📌 Bảng Tâm Sự Lớp ${CONFIG.className}`;
   document.getElementById('boardSubtitle').textContent = `Mùa thi ${CONFIG.year} — Gửi hết tâm tư vào đây đi nào`;
@@ -299,12 +299,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keydown', e => {
     const tag = document.activeElement.tagName;
-    if (e.key === 'Escape') { closeModal(); closeViewer(); }
+    if (e.key === 'Escape') { closeModal(); closeViewer(); document.getElementById('qrPopupOverlay').classList.remove('open'); }
     if (e.key === 'n' && tag !== 'TEXTAREA' && tag !== 'INPUT'
         && !document.getElementById('modalOverlay').classList.contains('open')) {
       openModal();
     }
   });
+
+  // ── QR popup events
+  document.getElementById('qrPopupClose').addEventListener('click', () =>
+    document.getElementById('qrPopupOverlay').classList.remove('open')
+  );
+  document.getElementById('qrPopupOverlay').addEventListener('click', e => {
+    if (e.target.id === 'qrPopupOverlay')
+      document.getElementById('qrPopupOverlay').classList.remove('open');
+  });
+  document.querySelector('.qr-badge').addEventListener('click', () =>
+    document.getElementById('qrPopupOverlay').classList.add('open')
+  );
 
   // ── Viewer events
   document.getElementById('viewerClose').addEventListener('click', closeViewer);
