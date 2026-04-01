@@ -263,6 +263,7 @@ async function submitNote() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  console.log('Group 6 : Hung - An - Quan - Phong - Nam');
   // Tên lớp từ config
   document.getElementById('boardTitle').textContent    = `📌 Bảng Tâm Sự Lớp ${CONFIG.className}`;
   document.getElementById('boardSubtitle').textContent = `Mùa thi ${CONFIG.year} — Gửi hết tâm tư vào đây đi nào`;
