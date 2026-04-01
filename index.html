@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bảng Tâm Sự 12A 🎓</title>
+
+  <!-- Fonts: Philosopher (display, hỗ trợ tiếng Việt) + Be Vietnam Pro (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- =================== BẢNG CHÍNH =================== -->
+<div class="frame-wrapper">
+  <div class="board-frame">
+    <div class="board">
+
+      <!-- Header -->
+      <div class="board-header">
+        <h1 class="board-title"  id="boardTitle">📌 Bảng Tâm Sự Lớp 12 Tin</h1>
+        <p  class="board-subtitle" id="boardSubtitle">Mùa thi 2026 — Gửi hết tâm tư vào đây đi nào</p>
+        <div class="chalk-line"></div>
+      </div>
+
+      <!-- Status bar -->
+      <div class="status-bar">
+        <div class="live-dot">
+          <div class="dot" id="liveDot"></div>
+          <span id="liveText">Đang kết nối...</span>
+        </div>
+        <span class="note-count" id="noteCount"></span>
+      </div>
+
+      <!-- Notes grid -->
+      <div class="notes-container" id="notesContainer">
+        <div class="loading-overlay" id="loadingOverlay">
+          <p class="loading-text">✦ Đang tải tâm sự của cả lớp... ✦</p>
+        </div>
+        <div class="empty-state" id="emptyState" style="display:none">
+          <p class="empty-chalk">Bảng đang trống...<br/>Hãy là người đầu tiên gửi tâm sự! 💌</p>
+        </div>
+      </div>
+
+    </div><!-- /.board -->
+
+    <!-- Thanh phấn trang trí -->
+    <div class="chalk-tray">
+      <div class="chalk-piece" style="background:#f5f0e8; width:45px"></div>
+      <div class="chalk-piece" style="background:#fda4af; width:35px"></div>
+      <div class="chalk-piece" style="background:#a7f3d0; width:28px"></div>
+      <div class="chalk-piece" style="background:#fef08a; width:40px"></div>
+    </div>
+
+  </div><!-- /.board-frame -->
+</div><!-- /.frame-wrapper -->
+
+<!-- =================== NÚT THÊM =================== -->
+<button class="add-btn" id="addBtn" title="Thả tâm sự (phím N)">✏️</button>
+
+<!-- =================== MODAL =================== -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Gửi tâm sự">
+  <div class="modal">
+    <div class="modal__pin"></div>
+    <h2 class="modal__title">✍️ Gửi tâm sự lên bảng</h2>
+
+    <!-- Color picker (render bởi main.js từ config) -->
+    <div class="color-picker" id="colorPicker"></div>
+
+    <textarea
+      class="modal-textarea"
+      id="noteInput"
+      placeholder="Tâm sự gì đi... Bóc phốt ai đó, xin lỗi ai đó, hay chỉ muốn nhắn gì với cả lớp cũng được 💬"
+      maxlength="160"
+    ></textarea>
+    <div class="char-count" id="charCount">0 / 160</div>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" id="cancelBtn">Thôi</button>
+      <button class="btn-submit" id="submitBtn">📌 Dán lên bảng!</button>
+    </div>
+  </div>
+</div>
+
+<!-- =================== NOTE VIEWER =================== -->
+<div class="viewer-overlay" id="viewerOverlay">
+  <div class="viewer-card" id="viewerCard">
+    <div class="viewer-pin" id="viewerPin"></div>
+    <p class="viewer-text" id="viewerText"></p>
+    <div class="viewer-footer">
+      <span class="viewer-time" id="viewerTime"></span>
+      <button class="viewer-close" id="viewerClose" aria-label="Đóng">✕</button>
+    </div>
+  </div>
+</div>
+
+<!-- =================== TOAST =================== -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- =================== SCRIPTS =================== -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
